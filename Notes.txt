@@ -1,0 +1,76 @@
+Second:
+IMP:All this theory is because Java gets confused about which method to call in non static without instance.
+
+We can't access a non static method from a static method coz
+static methods belong to the class and non-static methods belong to an object (instance)
+so to call a non-static method from a static method you need to have an owner i.e. obj.greeting();
+Note that u can call static from non-static
+
+static void fun(){
+greeting();
+}
+                       NOT ALLOWED as above is static and below non-static and it dosent know where and what is he calling
+
+void greeting(){
+Sysytem.out.println("Hello");
+}
+
+
+
+//Calling a nonstatic from a nonstatic
+In this the hey will be called using the instance of obj created in static indirectly using this as a reference to obj
+
+static void lap(){
+    Main obj=new Main();
+    obj.greeting();
+}
+void greeting(){
+    hey();
+}
+
+void hey(){
+System.out.println("Hey");
+}
+
+
+
+
+
+Q:this in static : The this keyword cannot be used in static methods
+1): static methods are not associated with any specific object.
+2):this means current object
+3):static belongs to the class
+
+
+
+Q:Outside classes can't be static and only nested classes can be static
+2): static means “does NOT depend on any object.”
+1): Top-level classes cannot be independent of a file / package context in that way.
+
+
+Q:On what does the class in every java code is dependednt on abpve psvm since it's not static
+1): Top-level classes NEVER depend on objects.
+2): They depend on the JVM + ClassLoader, not on another class.
+
+
+Note...
+1): Static classes,satic variables and all has nothing to with the object
+2): Objects are created at the run time.
+3): Hence static are resolved at the runtime
+
+
+Let's understand : Working of some statements
+1):System is a class
+2):out is a variable    (out is a variable type PrintStream which has a println method which is just calling that)
+3):println is a method  (calculates valueOf using some function/method and which call toString method)
+4): dot after each is to bind instance variable with reference methods(like we had this.name=name)
+5):Printing the simple object that is Sopln(obj): It will call toString if not present in the class of this obj then will call default printing classNamw@HashValue
+
+
+
+Q:For a class when only one instance or object is allowed to be created
+A:Singleton Class: To make a class Singleton, ALL 3 rules must be followed:
+1): Private constructor
+2):Private static instance variable(static → one per class    ,    private → cannot be modified outside)
+3):Public static access method     public static Singleton getInstance() {return instance;}
+
